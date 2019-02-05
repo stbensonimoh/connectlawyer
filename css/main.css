@@ -1,0 +1,40 @@
+.boogaloo {
+    font-family: 'Boogaloo', cursive;
+}
+
+.dosis {
+    font-family: 'Dosis', sans-serif;
+}
+
+.slabo {
+    font-family: 'Slabo 27px', serif;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.top-margin {
+    margin-top: 40px;
+}
+
+.bottom-margin {
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 90%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#form {
+    border-style: solid;
+    border-color: rgb(180, 180, 180);
+    border-radius: 15px;
+    border-width: 0px;
+    padding: 40px 40px 20px 40px;
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 255, .2);
+}
