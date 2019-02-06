@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ConnectLawyer | Indigents</title>
+    <meta name="description" content="We connect probono lawyers with indigent inmates in need of legal representation.">
+    <meta name="keywords" content="ConnectLawyer, Indigent, Prison, Indigent Inmates, Lawyers, Legal, representation, Hope Behind Bars, Hope Behind Bars Africa">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Load Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Dosis|Slabo+27px" rel="stylesheet">
+    <!-- Load Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!-- Load Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- Load sweetalert.js -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Load Main Stylesheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+</head>
+
+<body>
+    <div class="container" style="max-width: 87%;">
+        <div class="row justify-content-start">
+            <div class="col top-margin">
+                <p class="text-center animated pulse infinite"><img src="https://hopebehindbarsafrica.org/wp-content/uploads/2019/01/logo.png"
+                        style="width:200px;" /></p>
+                <h1 style="font-size:320%;" class="boogaloo text-center">ConnectLawyer</h1>
+                <p class="text-center slabo" style="font-size:100%;">Thank you for choosing to contribute your quota towards providing access to justice to indigents. <br> Please kindly answer the question below to enable us know what kind of cases to assign to you and where.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center top-margin">
+            <!-- form begins here -->
+            <form action="#" method="post" id="form" class="needs-validation bottom-margin" novalidate>
+                <div class="row">
+                    <div class="col-md form-group">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your First Name"
+                            required>
+                        <div class="invalid-feedback">
+                            Please provide a Name.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md form-group">
+                        <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Your Middle Name">
+                        <div class="invalid-feedback">
+                            Please provide a Name.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md form-group">
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your Last Name" required>
+                        <div class="invalid-feedback">
+                            Please provide a Name.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <small class="form-text text-muted">Kindly ensure that it is a current email. </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md form-group">
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Phone Number e.g. +2348081836149"
+                            required>
+                        <div class="invalid-feedback">
+                            Please provide a valid phone number.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="location">Where you currently live and practice LAW</label>
+                            <textarea class="form-control" id="location" rows="3" name="location" required></textarea>
+                            <div class="invalid-feedback">
+                                Please provide your current location.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <legend class="col-form-label">What service would you like to offer?</legend>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="service" id="advice" class="form-check-input" value="Advice" required>
+                            <label for="advice" class="form-check-label">Advice</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="service" id="information" class="form-check-input" value="Information">
+                            <label for="information" class="form-check-label">Information</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="service" id="representation" class="form-check-input" value="Representation">
+                            <label for="representation" class="form-check-label">Representation</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <legend class="col-form-label">Total number of criminal cases handled till date?</legend>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="handledCases" id="cases-a" class="form-check-input" value="0-5" required>
+                            <label for="cases-a" class="form-check-label">(0-5)</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="handledCases" id="cases-b" class="form-check-input" value="6-10">
+                            <label for="cases-b" class="form-check-label">(6-10)</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="handledCases" id="cases-c" class="form-check-input" value="10 - above">
+                            <label for="cases-c" class="form-check-label">(10 -above)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <legend class="col-form-label">Total number of probono cases handled till date?</legend>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="probonoCases" id="probono-a" class="form-check-input" value="0-5" required>
+                            <label for="probono-a" class="form-check-label">(0-5)</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="probonoCases" id="probono-b" class="form-check-input" value="6-10">
+                            <label for="probono-b" class="form-check-label">(6-10)</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="probonoCases" id="probono-c" class="form-check-input" value="10 - above">
+                            <label for="probono-c" class="form-check-label">(10 -above)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <legend class="col-form-label">Are you available to give at least 15 hours per month to probono cases?</legend>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="available" id="probonoYes" class="form-check-input" value="Yes" required>
+                            <label for="probonoYes" class="form-check-label">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="available" id="probonoNo" class="form-check-input" value="No">
+                            <label for="probonoNo" class="form-check-label">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <legend class="col-form-label">Indicate cases you are very familiar with according to the sentencing</legend>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="familiarCases" id="simpleOffence" class="form-check-input" value="Simple Offence"
+                                required>
+                            <label for="simpleOffence" class="form-check-label">Simple Offence</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="familiarCases" id="misdemeanor" class="form-check-input" value="Misdemeanor">
+                            <label for="misdemeanor" class="form-check-label">Misdemeanor</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="familiarCases" id="felony" class="form-check-input" value="Felony">
+                            <label for="felony" class="form-check-label">Felony</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <legend class="col-form-label">Would you require a mentor or senior colleague to guide you in handling any
+                            of the above?</legend>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="requireMentor" id="mentorYes" class="form-check-input" value="Yes" required>
+                            <label for="mentorYes" class="form-check-label">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline form-group">
+                            <input type="radio" name="requireMentor" id="mentorNo" class="form-check-input" value="No">
+                            <label for="mentorNo" class="form-check-label">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="mentorNeededFor">If Yes, which of them?</label>
+                            <input type="text" class="form-control" id="mentorNeededFor" placeholder="e.g Felony" name="mentorNeededFor" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>By submitting this information, you grant us the right to initiate further contacts with you via email or through your mobile number</p>
+                    </div>
+                </div>
+                <div class="form-check text-center">
+                    <input class="form-check-input" id="agree" type="checkbox" name="agree" value="I agree" required>
+                    <label class="form-check-label" for="agree">
+                    I agree that i have been called to the Nigerian bar and currently practice law in Nigeria
+                    </label>
+                </div>
+                <div class="row top-margin bottom-margin">
+                    <div class="col">
+                        <p class="text-center"><button type="submit" id="register" class="btn btn-danger" style="padding-left: 40px; padding-right:40px; margin-top:20px;">SUBMIT</button></p>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+
+        <!-- footer begins here -->
+        <div class="row top-margin bottom-margin" style="margin-top:50px;">
+            <div class="col">
+                <p class="text-center">&copy; 2019 <a href="https://hopebehindbarsafrica.org">Hope Behind Bars Africa</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Load Boostrap, Slip JQuery and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./scripts/lawyers.js"></script>
+</body>
+
+</html>
