@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 06, 2019 at 03:15 PM
+-- Generation Time: Feb 06, 2019 at 03:45 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `indigent`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `lawyer` (
   `handledCases` text NOT NULL,
   `probonoCases` text NOT NULL,
   `available` text NOT NULL,
-  `familarCases` text NOT NULL,
+  `familiarCases` text NOT NULL,
   `requireMentor` text NOT NULL,
   `mentorNeededFor` text NOT NULL,
   `agree` text NOT NULL,
