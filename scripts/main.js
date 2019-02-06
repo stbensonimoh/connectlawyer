@@ -37,12 +37,12 @@ $(document).ready(() => {
 
     // Capitalize the first letter of Middle Name
     $('#middleName').on('change', function (e) {
-    let $this = $(this)
+        let $this = $(this)
 
-    let val = $this.val()
-    RegExp = /\b[a-z]/g
+        let val = $this.val()
+        RegExp = /\b[a-z]/g
 
-    val = val.charAt(0).toUpperCase() + val.substr(1)
+        val = val.charAt(0).toUpperCase() + val.substr(1)
     })
 
     // Capitalize the first letter of Last Name
@@ -103,56 +103,54 @@ $(document).ready(() => {
         if (form.checkValidity() === true) {
             // put form data into variables
             let firstName = $.trim(document.getElementById('firstName').value)
+            let middleName = $.trim(document.getElementById('middleName').value)
             let lastName = $.trim(document.getElementById('lastName').value)
             let email = $.trim(document.getElementById('email').value)
             let phone = $.trim(document.getElementById('phone').value)
-            let country = document.getElementById('country').value
-            let occupation = $.trim(document.getElementById('occupation').value)
-            let organisation = $.trim(document.getElementById('organisation').value)
-            let member = document.querySelector('input[name="member"]:checked').value
-            let referrer = $.trim(document.getElementById('referrer').value)
-            let firstConference = document.querySelector(
-                'input[name="firstConference"]:checked'
-            ).value
+            let location = $.trim(document.getElementById('location').value)
+            let inmateFirstName = $.trim(document.getElementById('inmateFirstName').value)
+            let inmateMiddleName = $.trim(document.getElementById('inmateMiddleName').value)
+            let inmateLastName = $.trim(document.getElementById('inmateLastName').value)
+            let prisonLocation = $.trim(document.getElementById('prisonLocation').value)
+            let summaryOfCase = $.trim(document.getElementById('summaryOfCase').value)
 
             let postData = JSON.stringify({
                 firstName: firstName,
+                middleName: middleName,
                 lastName: lastName,
                 email: email,
                 phone: phone,
-                country: country,
-                occupation: occupation,
-                organisation: organisation,
-                member: member,
-                referrer: referrer,
-                firstConference: firstConference,
-                currency: currency,
-                amount: amount
+                location: location,
+                inmateFirstName: inmateFirstName,
+                inmateMiddleName: inmateMiddleName,
+                inmateLastName: inmateLastName,
+                prisonLocation: prisonLocation,
+                summaryOfCase: summaryOfCase
             })
 
-            fetch('scripts/paynow.php', {
-                method: 'post',
-                mode: 'same-origin',
-                credentials: 'same-origin',
-                body: postData
-            })
+            // console.log(postData)
+
+            fetch('scripts/indigent_processor.php', {
+                    method: 'post',
+                    mode: 'same-origin',
+                    credentials: 'same-origin',
+                    body: postData
+                })
                 .then(response => {
                     return response.json()
                 })
                 .then(data => {
-                    if (data === 'user_exists') {
+                    if (data === 'success') {
                         swal(
-                            'Already Registered',
-                            'You have already registered for the conference.',
-                            'error'
+                            'Successful Submission',
+                            'Your submission was successful!',
+                            'success'
                         )
                         setTimeout(function () {
-                            window.location = 'https://awlo.org/awlc/'
+                            window.location = 'https://hopebehindbarsafrica.org/'
                         }, 3000)
-                    } else {
-                        window.location.href = data
-                        // console.log(data);
                     }
+                        // console.log(data);
                 })
                 .catch(error => {
                     console.log('The Request Failed', error)
