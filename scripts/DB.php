@@ -40,6 +40,7 @@ class DB
         //Create PDO Connection with the dbconfig data
         $this->_conn = new PDO($this->_dsn, $username, $password);
 
+
         return $this->_conn;
     }
 
@@ -81,6 +82,7 @@ class DB
         // Insert the user into the database
         $enteruser = "INSERT into $tablename (" . implode(',', $columns) .")
                     VALUES ('" . implode("', '", $values) . "')";
+                    // echo $enteruser;
         //  Prepare Query
         $enteruserquery = $this->_conn->prepare($enteruser);
         //  Execute the Query

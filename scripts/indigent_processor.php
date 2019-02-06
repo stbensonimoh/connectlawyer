@@ -10,8 +10,8 @@
  * @license  MIT https://opensource.org/licenses/MIT
  * @link     https://stbensonimoh.com
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 //Require Classes
 require '../config.php';
@@ -20,17 +20,35 @@ require './Notify.php';
 require './Newsletter.php';
 
 // Capture Post Data that is coming from the form
+$_POST = json_decode(file_get_contents('php://input'), true);
 
 $firstName = $_POST['firstName'];
+$middleName = $_POST['middleName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
+$location = $_POST['location'];
+$inmateFirstName = $_POST['inmateFirstName'];
+$inmateMiddleName = $_POST['inmateMiddleName'];
+$inmateLastName = $_POST['inmateLastName'];
+$prisonLocation = $_POST['prisonLocation'];
+$summaryOfCase = $_POST['summaryOfCase'];
+$name = $firstName . " " . $lastName;
+
+require './emails.php';
 
 $details = array(
     "firstName" => $_POST['firstName'],
+    "middleName" => $_POST['middleName'],
     "lastName" => $_POST['lastName'],
     "email" => $_POST['email'],
-    "phone" => $_POST['phone']
+    "phone" => $_POST['phone'],
+    "location" => $_POST['location'],
+    "inmateFirstName" => $_POST['inmateFirstName'],
+    "inmateMiddleName" => $_POST['inmateMiddleName'],
+    "inmateLastName" => $_POST['inmateLastName'],
+    "prisonLocation" => $_POST['prisonLocation'],
+    "summaryOfCase" => $_POST['summaryOfCase']
 );
 
 $emails = array(
@@ -39,6 +57,7 @@ $emails = array(
             "variables"     =>  array(
             "phone"         =>  $phone,
             "name"          =>  $firstName,
+            "middleNmae"    =>  $middleName,
             "lastName"      =>  $lastName
             )
     )
@@ -48,22 +67,13 @@ $db = new DB($host, $db, $username, $password);
 $notify = new Notify($smstoken, $emailHost, $emailUsername, $emailPassword, $SMTPDebug, $SMTPAuth, $SMTPSecure, $Port);
 $newsletter = new Newsletter($apiUserId, $apiSecret);
 
-// Check to see if userexists
-
-// if ($db->userExists($email, "person")) {
-//     echo "User Exists";
-// } else {
-//     echo "User doesn't exist!";
-// }
 
 // Put the User into the Database
-// if ($db->insertUser("person", $details)) {
-//     echo "User Inserted";
-// } else {
-//     echo "User not inserted";
-// }
-
-// // Send Notifications
-// $notify->viaEmail("info@awlo.org", "African Women in Leadership Organisation", $email, $firstName, $emailBody, "This one Na Test");
-// $notify->viaSMS("AWLO", "Hey there! I'm watching you.", $phone);
-// $newsletter->insertIntoList("2272840", $emails);
+if ($db->insertUser("indigent", $details)) {
+    $notify->viaEmail("letstalk@hopebehindbarsafrica.org", "Hope Behind Bars Africa", $email, $name, $emailBodyIndigent, "Thanks for Reaching Out");
+    $notify->viaEmail("letstalk@hopebehindbarsafrica.org", "Hope Behind Bars Africa", "letstalk@hopebehindbarsafrica.org", "Admin", $emailBodyIndigentOrganisation, "New Submission about an Indigent");
+    $notify->viaSMS("HBBAfrica", "Dear {$firstName} {$lastName}, thank you for reaching out to us. Your details have been received and a representative will reach out to you shortly. Cheers!", $phone);
+    $notify->viaSMS("HBBAfrica", "Someone has submitted information about an Indigent on the ConnectLawyer app. Kindly check your email for the details.", "08073600790");
+    $newsletter->insertIntoList("2278719", $emails);
+    echo json_encode("success");
+}

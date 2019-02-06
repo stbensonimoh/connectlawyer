@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 06, 2019 at 11:34 AM
+-- Generation Time: Feb 06, 2019 at 09:34 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `indigent`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `indigent` (
   `firstName` text NOT NULL,
   `middleName` text,
   `lastName` text NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `phone` varchar(15) NOT NULL,
   `location` text NOT NULL,
   `inmateFirstName` text NOT NULL,
@@ -50,8 +50,7 @@ CREATE TABLE `indigent` (
 -- Indexes for table `indigent`
 --
 ALTER TABLE `indigent`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
