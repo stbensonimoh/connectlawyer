@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 06, 2019 at 02:43 PM
+-- Generation Time: Feb 06, 2019 at 03:15 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `indigent _2`
+-- Table structure for table `lawyer`
 --
 
-CREATE TABLE `indigent _2` (
+CREATE TABLE `lawyer` (
   `id` int(10) UNSIGNED NOT NULL,
   `firstName` text NOT NULL,
   `middleName` text,
@@ -50,9 +50,9 @@ CREATE TABLE `indigent _2` (
 --
 
 --
--- Indexes for table `indigent _2`
+-- Indexes for table `lawyer`
 --
-ALTER TABLE `indigent _2`
+ALTER TABLE `lawyer`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
@@ -61,9 +61,9 @@ ALTER TABLE `indigent _2`
 --
 
 --
--- AUTO_INCREMENT for table `indigent _2`
+-- AUTO_INCREMENT for table `lawyer`
 --
-ALTER TABLE `indigent _2`
+ALTER TABLE `lawyer`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
