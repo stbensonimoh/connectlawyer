@@ -35,8 +35,46 @@ $(document).ready(() => {
         val = val.charAt(0).toUpperCase() + val.substr(1)
     })
 
+    // Capitalize the first letter of Middle Name
+    $('#middleName').on('change', function (e) {
+    let $this = $(this)
+
+    let val = $this.val()
+    RegExp = /\b[a-z]/g
+
+    val = val.charAt(0).toUpperCase() + val.substr(1)
+    })
+
     // Capitalize the first letter of Last Name
     $('#lastName').on('change', function (e) {
+        let $this = $(this),
+            val = $this.val()
+        RegExp = /\b[a-z]/g
+
+        val = val.charAt(0).toUpperCase() + val.substr(1)
+    })
+
+    // Capitalize the first letter of Inmate's First Name
+    $('#inmateFirstName').on('change', function (e) {
+        let $this = $(this),
+            val = $this.val()
+        RegExp = /\b[a-z]/g
+
+        val = val.charAt(0).toUpperCase() + val.substr(1)
+    })
+
+    // Capitalize the first letter of Inmate's Middle Name
+    $('#inmateMiddleName').on('change', function (e) {
+        let $this = $(this)
+
+        let val = $this.val()
+        RegExp = /\b[a-z]/g
+
+        val = val.charAt(0).toUpperCase() + val.substr(1)
+    })
+
+    // Capitalize the first letter of Inmate's Last Name
+    $('#inmateLastName').on('change', function (e) {
         let $this = $(this),
             val = $this.val()
         RegExp = /\b[a-z]/g
@@ -50,49 +88,57 @@ $(document).ready(() => {
             val = $this.val()
         val = val.toLowerCase()
     })
-    // Hide the products fields until yes is clicked
-    $('#yes').click(function (e) {
-        $('#mentor').prop("disabled", false);
-    });
 
-    // Hide the products fields if no is clicked
-    $('#no').click(function (e) {
-        $('#mentor').prop("disabled", true);
-    });
+    $('form').submit(event => {
+        // stop the button from submitting
+        event.preventDefault()
 
-    $('form').submit(function (event) {
-        event.preventDefault();
+        // Make the submit button load
+        $('button').removeClass('btn-danger')
+        $('button').toggleClass('btn-primary')
+        $('button').html(
+            'Loading <span class="spinner"></span><i class="fa fa-spinner fa-spin"></i></span>'
+        )
 
-        $('form').submit(event => {
-            // stop the button from submitting
-            event.preventDefault()
+        if (form.checkValidity() === true) {
+            // put form data into variables
+            let firstName = $.trim(document.getElementById('firstName').value)
+            let lastName = $.trim(document.getElementById('lastName').value)
+            let email = $.trim(document.getElementById('email').value)
+            let phone = $.trim(document.getElementById('phone').value)
+            let country = document.getElementById('country').value
+            let occupation = $.trim(document.getElementById('occupation').value)
+            let organisation = $.trim(document.getElementById('organisation').value)
+            let member = document.querySelector('input[name="member"]:checked').value
+            let referrer = $.trim(document.getElementById('referrer').value)
+            let firstConference = document.querySelector(
+                'input[name="firstConference"]:checked'
+            ).value
 
-            // Make the submit button load
-            $('button').removeClass('btn-danger')
-            $('button').toggleClass('btn-primary')
-            $('button').html(
-                'Loading <span class="spinner"></span><i class="fa fa-spinner fa-spin"></i></span>'
-            )
-            // Put the Form Data into Variables
-            let firstName = $.trim(document.getElementById('firstName').value);
-            let lastName = $.trim(document.getElementById('lastName').value);
-            let email = $.trim(document.getElementById('email').value);
-            let phone = $.trim(document.getElementById('phone').value);
-            let location = $.trim(document.getElementById('location').value);
-            let service = document.querySelector('input[name="service"]:checked').value;
-            let cases = $.trim(document.getElementById('cases').value);
-            let probono = $.trim(document.getElementById('probono').value)
-            let sentence = $.trim(document.getElementById('sentence').value);
-            let mentor = $.trim(document.getElementById('mentor').value)
-
-
-            let dataString = 'firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&phone=' + phone + '&location=' + location + '&service=' + service + '&cases=' + cases + '&probono=' + probono + '&sentence=' + sentence + '&mentor=' + mentor;
-
-
-
-            then(response => {
-                return response.json()
+            let postData = JSON.stringify({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                country: country,
+                occupation: occupation,
+                organisation: organisation,
+                member: member,
+                referrer: referrer,
+                firstConference: firstConference,
+                currency: currency,
+                amount: amount
             })
+
+            fetch('scripts/paynow.php', {
+                method: 'post',
+                mode: 'same-origin',
+                credentials: 'same-origin',
+                body: postData
+            })
+                .then(response => {
+                    return response.json()
+                })
                 .then(data => {
                     if (data === 'user_exists') {
                         swal(
@@ -111,6 +157,6 @@ $(document).ready(() => {
                 .catch(error => {
                     console.log('The Request Failed', error)
                 })
-        })
+        }
     })
 })
