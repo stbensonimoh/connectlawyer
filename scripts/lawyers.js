@@ -54,34 +54,6 @@ $(document).ready(() => {
         val = val.charAt(0).toUpperCase() + val.substr(1)
     })
 
-    // Capitalize the first letter of Inmate's First Name
-    $('#inmateFirstName').on('change', function (e) {
-        let $this = $(this),
-            val = $this.val()
-        RegExp = /\b[a-z]/g
-
-        val = val.charAt(0).toUpperCase() + val.substr(1)
-    })
-
-    // Capitalize the first letter of Inmate's Middle Name
-    $('#inmateMiddleName').on('change', function (e) {
-        let $this = $(this)
-
-        let val = $this.val()
-        RegExp = /\b[a-z]/g
-
-        val = val.charAt(0).toUpperCase() + val.substr(1)
-    })
-
-    // Capitalize the first letter of Inmate's Last Name
-    $('#inmateLastName').on('change', function (e) {
-        let $this = $(this),
-            val = $this.val()
-        RegExp = /\b[a-z]/g
-
-        val = val.charAt(0).toUpperCase() + val.substr(1)
-    })
-
     // change the email to lowercase
     $('#email').on('change', function (e) {
         let $this = $(this),
@@ -103,34 +75,40 @@ $(document).ready(() => {
         if (form.checkValidity() === true) {
             // put form data into variables
             let firstName = $.trim(document.getElementById('firstName').value)
+            let middleName = $.trim(document.getElementById('middleName').value)
             let lastName = $.trim(document.getElementById('lastName').value)
             let email = $.trim(document.getElementById('email').value)
             let phone = $.trim(document.getElementById('phone').value)
-            let country = document.getElementById('country').value
-            let occupation = $.trim(document.getElementById('occupation').value)
-            let organisation = $.trim(document.getElementById('organisation').value)
-            let member = document.querySelector('input[name="member"]:checked').value
-            let referrer = $.trim(document.getElementById('referrer').value)
-            let firstConference = document.querySelector(
-                'input[name="firstConference"]:checked'
-            ).value
+            let location = $.trim(document.getElementById('location').value)
+            let service = document.querySelector('input[name="service"]:checked').value
+            let handledCases = document.querySelector('input[name="handledCases"]:checked').value
+            let probonoCases = document.querySelector('input[name="probonoCases"]:checked').value
+            let available = document.querySelector('input[name="available"]:checked').value
+            let familiarCases = document.querySelector('input[name="familiarCases"]:checked').value
+            let requireMentor = document.querySelector('input[name="requireMentor"]:checked').value
+            let mentorNeededFor = $.trim(document.getElementById('mentorNeededFor').value)
+            let agree = document.getElementById('agree').value
 
             let postData = JSON.stringify({
                 firstName: firstName,
+                middleName: middleName,
                 lastName: lastName,
                 email: email,
                 phone: phone,
-                country: country,
-                occupation: occupation,
-                organisation: organisation,
-                member: member,
-                referrer: referrer,
-                firstConference: firstConference,
-                currency: currency,
-                amount: amount
+                location: location,
+                service: service,
+                handledCases: handledCases,
+                probonoCases: probonoCases,
+                available: available,
+                familiarCases: familiarCases,
+                requireMentor: requireMentor,
+                mentorNeededFor: mentorNeededFor,
+                agree: agree
             })
 
-            fetch('scripts/paynow.php', {
+            // console.log(postData)
+
+            fetch('scripts/lawyer_processor.php', {
                     method: 'post',
                     mode: 'same-origin',
                     credentials: 'same-origin',
@@ -140,19 +118,26 @@ $(document).ready(() => {
                     return response.json()
                 })
                 .then(data => {
-                    if (data === 'user_exists') {
+                    if(data === 'user_exists') {
                         swal(
-                            'Already Registered',
-                            'You have already registered for the conference.',
-                            'error'
+                            'Already Signed Up',
+                            'You\'re already signed up!',
+                            'warning'
                         )
                         setTimeout(function () {
-                            window.location = 'https://awlo.org/awlc/'
+                            window.location = 'https://hopebehindbarsafrica.org/'
                         }, 3000)
-                    } else {
-                        window.location.href = data
-                        // console.log(data);
+                    } else if (data === 'success') {
+                        swal(
+                            'Successful Sign Up',
+                            'Your signup was successful!',
+                            'success'
+                        )
+                        setTimeout(function () {
+                            window.location = 'https://hopebehindbarsafrica.org/'
+                        }, 3000)
                     }
+                    // console.log(data);
                 })
                 .catch(error => {
                     console.log('The Request Failed', error)
