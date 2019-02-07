@@ -80,11 +80,12 @@ if ($db->userExists($email, "lawyer")) {
     echo json_encode("user_exists");
 } elseif ($db->insertUser("lawyer", $details)) {
     // Put the User into the Database
-    echo json_encode("success");
     $notify->viaEmail("letstalk@hopebehindbarsafrica.org", "Hope Behind Bars Africa", $email, $name, $emailBodyLawyer, "We're excited to have you join us!");
     $notify->viaEmail("letstalk@hopebehindbarsafrica.org", "Hope Behind Bars Africa", "letstalk@hopebehindbarsafrica.org", "Admin", $emailBodyLawyerOrganisation, "A Lawyer has signed up on the ConnectLawyer App.");
     $notify->viaSMS("HBBAfrica", "Dear {$firstName} {$lastName}, tthank you for bringing hope by choosing to contribute your quota towards providing access to justice for indigents. We're excited to have you join us. Our representative will speak with you shortly. Cheers!", $phone);
     $notify->viaSMS("HBBAfrica", "A Lawyer has signed up on the ConnectLawyer App. Kindly check your email for the details.", "08073600790");
     $notify->viaSMS("HBBAfrica", "A Lawyer has signed up on the ConnectLawyer App. Kindly check your email for the details. Kindly check your email for the details.", "07033633243");
     $newsletter->insertIntoList("2278825", $emails);
+    echo json_encode("success");
+
 }

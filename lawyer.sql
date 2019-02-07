@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 06, 2019 at 03:45 PM
+-- Generation Time: Feb 07, 2019 at 01:36 AM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -40,7 +40,7 @@ CREATE TABLE `lawyer` (
   `available` text NOT NULL,
   `familiarCases` text NOT NULL,
   `requireMentor` text NOT NULL,
-  `mentorNeededFor` text NOT NULL,
+  `mentorNeededFor` text,
   `agree` text NOT NULL,
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
