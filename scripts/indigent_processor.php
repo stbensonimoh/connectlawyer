@@ -4,8 +4,8 @@
  *
  * PHP version 7.2
  *
- * @category Registration_And_Payment
- * @package  Registration_And_Payment
+ * @category Indigent_Registration_Processor
+ * @package  Indigent_Registration_Processor
  * @author   Benson Imoh,ST <benson@stbensonimoh.com>
  * @license  MIT https://opensource.org/licenses/MIT
  * @link     https://stbensonimoh.com
@@ -57,7 +57,7 @@ $emails = array(
             "variables"     =>  array(
             "phone"         =>  $phone,
             "name"          =>  $firstName,
-            "middleNmae"    =>  $middleName,
+            "middleName"    =>  $middleName,
             "lastName"      =>  $lastName
             )
     )
@@ -70,10 +70,11 @@ $newsletter = new Newsletter($apiUserId, $apiSecret);
 
 // Put the User into the Database
 if ($db->insertUser("indigent", $details)) {
+    echo json_encode("success");
     $notify->viaEmail("letstalk@hopebehindbarsafrica.org", "Hope Behind Bars Africa", $email, $name, $emailBodyIndigent, "Thanks for Reaching Out");
     $notify->viaEmail("letstalk@hopebehindbarsafrica.org", "Hope Behind Bars Africa", "letstalk@hopebehindbarsafrica.org", "Admin", $emailBodyIndigentOrganisation, "New Submission about an Indigent");
     $notify->viaSMS("HBBAfrica", "Dear {$firstName} {$lastName}, thank you for reaching out to us. Your details have been received and a representative will reach out to you shortly. Cheers!", $phone);
     $notify->viaSMS("HBBAfrica", "Someone has submitted information about an Indigent on the ConnectLawyer app. Kindly check your email for the details.", "08073600790");
+    $notify->viaSMS("HBBAfrica", "Someone has submitted information about an Indigent on the ConnectLawyer app. Kindly check your email for the details.", "07033633243");
     $newsletter->insertIntoList("2278719", $emails);
-    echo json_encode("success");
 }
